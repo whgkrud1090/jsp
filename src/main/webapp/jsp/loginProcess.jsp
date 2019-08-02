@@ -18,8 +18,22 @@
 		
 		String userId = request.getParameter("userId");
 		** 조심 **String userId = request.getParameter(userId);
+		
 		String password = request.getParameter("password");
 	-->
+	
+	<!-- 메소드를 가져온다. -->
+	
+	<%
+		//호출 시점 중요함
+		//모든 자바 코드 중 가장 위쪽에 설정하는 것이 좋다.(안전하다.)
+		
+		//parameter관련 메소드를 호출하기 전에 
+		//setCharacterEncoding메소드를 호출해야 인코딩 설정이 적용된다.
+		request.setCharacterEncoding("utf-8");
+	%>
+	
+	request method : <%= request.getMethod() %><br>
 	<h2>request.getParameter</h2>
 	<%
 		String userId = request.getParameter("userId");
