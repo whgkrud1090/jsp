@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	jsp 프로젝트의 webapp/jsp2/index.jsp
+	jsp 프로젝트의 webapp/jsp2/index.jsp 
 </body>
 </html>
