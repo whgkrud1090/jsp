@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<script src="/js/jquery-3.4.1.min.js"></script>
+<script src="<%= request.getContextPath() %>/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript">
 
 	//문서 로딩이 완료된 다음 실행
@@ -51,7 +51,7 @@
 get : <input type="radio" id="get" name="method" value="get"checked="checked"/>
 post : <input type="radio" id="post" name="method" value="post"/>
 <br>
-<form action="/jsp/loginProcess.jsp" method="get">
+<form action="<%= request.getContextPath() %>/jsp/loginProcess.jsp" method="get">
 	user id : <input type="text" name="userId" value="brown"/><br>
 	user id : <input type="text" name="userId" value="cony"/><br>
 	password : <input type="password" name="password" value="brown1234"/><br>
