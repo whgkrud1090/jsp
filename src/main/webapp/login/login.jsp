@@ -28,7 +28,7 @@
     	HttpSession httpsession = request.getSession();
     	UserVo userVo = (UserVo)httpsession.getAttribute("S_USERVO");
     	String userName = "";
-    	userName = userVo == null ? "" : userVo.getUserName();
+    	userName = userVo == null ? "" : userVo.getUserName(); 
     %>
 		사용자 이름 : <%=userName%>
       <form action="<%=request.getContextPath() %>/login" method="post" class="form-signin">
