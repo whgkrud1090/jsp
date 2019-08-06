@@ -1,6 +1,8 @@
 <%@page import="kr.or.ddit.user.model.UserVo"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +17,11 @@
 
 <title>Jsp</title>
 
-<script src="<%=request.getContextPath() %>/js/jquery-3.4.1.min.js"></script>
+<script src="<%=request.getContextPath() %>/js/jquery-3.4.1.min.js"></script><link href="bootstrap.css" rel="stylesheet"><!-- Bootstrap core CSS -->
 <link href="<%=request.getContextPath() %>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+<script src="<%=request.getContextPath() %>/js/jquery-3.4.1.min.js"></script>
+
 <link href="<%=request.getContextPath() %>/css/dashboard.css" rel="stylesheet">
 <link href="<%=request.getContextPath() %>/css/blog.css" rel="stylesheet">
 </head>
@@ -41,16 +46,6 @@
 				<li><a href="#">Settings</a></li>
 				<li><a href="#">Profile</a></li>
 				<li><a href="#">Help</a></li>
-				<%
-					//로그인한 사용자의 이름정보를 가져와 카테고리 영역에 추가한다.
-					UserVo userVo = (UserVo)session.getAttribute("S_USERVO");
-				
-					String userName = "";
-			    	userName = userVo == null ? "" : userVo.getUserNm();
-					
-				%>
-				
-				<li><a href="#"><%=userName %></a></li>
 			</ul>
 			<form class="navbar-form navbar-right">
 				<input type="text" class="form-control" placeholder="Search...">
@@ -62,47 +57,54 @@
 			
 <div class="col-sm-3 col-md-2 sidebar">
 	<ul class="nav nav-sidebar">
-		<li class="active"><a href="<%=request.getContextPath() %>/userList">사용자리스트<span class="sr-only">(current)</span></a></li>
+		<li class="active"><a href="#">Main <span class="sr-only">(current)</span></a></li>
 		<li class="active"><a href="#">사용자</a></li>
 	</ul>
 </div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
 
-<div class="blog-header">
-	<h1 class="blog-title">Main</h1>
-	<p class="lead blog-description">Jsp / Spring.</p>
-</div>
-
 <div class="row">
-
 	<div class="col-sm-8 blog-main">
+		<h2 class="sub-header">사용자</h2>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<tr>
+					<th>사용자 아이디</th>
+					<th>사용자 이름</th>
+					<th>사용자 별명</th>
+					<th>등록일시</th>
+				</tr>
+				<%
+				List<UserVo> userList = (List<UserVo>)request.getAttribute("userList");
+				
+				for(UserVo uservo : userList){
+				%>
+				<tr>
+					<td><%= uservo.getUserId() %></td>
+					<td><%= uservo.getUserNm() %></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<%} %>
+				
+			</table>
+		</div>
 
-		<div class="blog-post">
-			<h2 class="blog-post-title">JSP</h2>
-			<p class="blog-post-meta">
-				2017.10.30, room 201
-			</p>
+		<a class="btn btn-default pull-right">사용자 등록</a>
 
-			<p>jsp를 통한 웹 프로그래밍 학습</p>
-			<hr>
-			
-			<h3>상세내역</h3>
-			<p>JSP과정에서는 다음과 같은 내용을 학습한다.</p>
-			<ul>
-				<li>servlet 동작원리</li>
-				<li>jsp와 servlet의 관계</li>
-				<li>jsp 스크립틀릿 요소</li>
-				<li>jsp action tag (standard)</li>
-				<li>jstl</li>
-				<li>db pooling</li>
-				<li>페이지 모듈화</li>
+		<div class="text-center">
+			<ul class="pagination">
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
 			</ul>
 		</div>
 	</div>
-	<!-- /.blog-main -->
-</div>	</div>
+</div>
+	</div>
 		</div>
 	</div>
 </body>
 </html>
-    

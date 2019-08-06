@@ -4,24 +4,21 @@ public class UserVo {
 
 	//사용자 이름
 
-	private String userName;
+	private String userNm;
 	private String userId;
 	private String pass;
 
 	public UserVo() {
 	}
-	public UserVo(String userName) {
-		this.userName = userName;
+	public UserVo(String userNm) {
+		this.userNm = userNm;
 	}
-
-	public String getUserName() {
-		return userName;
+	public String getUserNm() {
+		return userNm;
 	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserNm(String userNm) {
+		this.userNm = userNm;
 	}
-
 	public String getUserId() {
 		return userId;
 	}
@@ -40,6 +37,6 @@ public class UserVo {
 
 	@Override
 	public String toString() {
-		return "UserVo [userName=" + userName + ", userId=" + userId + ", pass=" + pass + "]";
+		return "UserVo [userNm=" + userNm + ", userId=" + userId + ", pass=" + pass + "]";
 	}
 }

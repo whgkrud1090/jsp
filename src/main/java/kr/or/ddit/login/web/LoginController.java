@@ -56,7 +56,7 @@ public class LoginController extends HttpServlet {
 		
 		//사용자가 입력한 계정정보와 db에 있는 값 비교
 		UserVo userVo = new UserVo();
-		userVo.setUserName("브라운");
+		userVo.setUserNm("브라운");
 		userVo.setUserId("brown");
 		userVo.setPass("brown1234");
 		
