@@ -3,10 +3,16 @@ package kr.or.ddit.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import kr.or.ddit.login.web.LoginController;
 
 //J2EE 기반의 웹 어플리케이션 개발시 main method를 통해 실행하지 않는다.
 //우리가 작성한 웹 어플리케이션을(war) was(tomcat)의 webapps폴더 밑에 이동을 시켜주면
@@ -26,12 +32,12 @@ import javax.servlet.http.HttpServletResponse;
 //		(web.xml, servlet 3.0 이후부터는 servlet class 어노테이션으로 설정)
 
 public class HelloServlet extends HttpServlet{
-
-	
-	
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	@Override
-	public void init() throws ServletException {
-		System.out.println("HelloServlet init()");
+	public void init(ServletConfig config) throws ServletException {
+		
+		logger.debug("HelloServlet init() : {}", config.getInitParameter("test"));
+//		System.out.println("HelloServlet init()");
 	}
 
 	@Override

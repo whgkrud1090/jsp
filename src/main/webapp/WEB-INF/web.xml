@@ -9,7 +9,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-  
+	
+	<!-- 초기화 파라미터 -->
+ 	<context-param>
+		<param-name>ADMIN</param-name>
+		<param-value>brown</param-value>
+	</context-param> 
   <servlet>
 
   	<!-- 개발자가 붙여주는 서블릿의 이름(별칭) -->
@@ -17,7 +22,11 @@
  
   	<!-- 서블릿의 풀네임(페키지 + 클래스명) -->
   	<servlet-class>kr.or.ddit.servlet.HelloServlet</servlet-class>
- 
+	<load-on-startup>1</load-on-startup> 
+<!-- 	<init-param> -->
+<!-- 		<param-name>test</param-name> -->
+<!-- 		<param-value>sally</param-value> -->
+<!-- 	</init-param> -->
   </servlet>
   <servlet-mapping>
   	<servlet-name>helloWorld</servlet-name>
@@ -27,6 +36,7 @@
     <servlet>
   	<servlet-name>TimesTableServlet</servlet-name>
   	<servlet-class>kr.or.ddit.servlet.TimesTable</servlet-class>
+	<load-on-startup>5</load-on-startup> 
   </servlet>
   <servlet-mapping>
   	<servlet-name>TimesTableServlet</servlet-name>
