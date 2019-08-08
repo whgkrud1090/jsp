@@ -1,5 +1,5 @@
 <%@page import="kr.or.ddit.user.repository.UserDao"%>
-<%@page import="kr.or.ddit.user.model.UserVo"%>
+<%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@page import="kr.or.ddit.user.repository.IUserDao"%>
 <%@ page language="java" contentType="application/vnd.ms-excel; charset=UTF-8"
@@ -11,10 +11,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<% 
+<%
 	response.setHeader("Content-Disposition", "attachement; filename=line.xls");
 	IUserDao userDao = new UserDao();
-	List<UserVo> userList = userDao.getUserList();
+	List<User> userList = userDao.getUserList();
 %>
 	<table>
 		<tr>
@@ -22,7 +22,9 @@
 			<th>나이</th>
 		</tr>
 		<tr>
-	<%for(UserVo userVo : userList){%>
+	<%
+		for(User userVo : userList){
+	%>
 			<td><%=userVo.getUserNm()%></td>
 		</tr>
 	<%}%>

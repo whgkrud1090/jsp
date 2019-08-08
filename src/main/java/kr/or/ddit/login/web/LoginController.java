@@ -11,7 +11,9 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import kr.or.ddit.user.model.UserVo;
+import kr.or.ddit.user.model.User;
+import kr.or.ddit.user.repository.IUserDao;
+import kr.or.ddit.user.repository.UserDao;
 
 @WebServlet("/login")
 public class LoginController extends HttpServlet {
@@ -55,22 +57,21 @@ public class LoginController extends HttpServlet {
 		logger.debug("pass {}", pass);
 		
 		//사용자가 입력한 계정정보와 db에 있는 값 비교
-		UserVo userVo = new UserVo();
-		userVo.setUserNm("브라운");
-		userVo.setUserId("brown");
-		userVo.setPass("brown1234");
 		
+		//db에서 조회한 사용자 정보
+		IUserDao userDao = new UserDao();
+		User user = userDao.getUser(userId);
+		
+		if(user.checkLoginValidate(userId, pass)) {
 		//사용자가 입력한 파라미터 정보와 db에서 조회해온 값이 동일할 경우
 		//		--> webapp/mein.jsp
 		
 		//사용자가 입력한 파라미터 정보와 db에서 조회해온 값이 동일하지 않을 경우
 		//		-->webapp/login/login.jsp
-		
-		if(userId.equals(userVo.getUserId()) && pass.equals(userVo.getPass())) {
 			
 			HttpSession session = request.getSession();
 			logger.debug("session.getId() : {}", session.getId());
-			session.setAttribute("S_USERVO", userVo);
+			session.setAttribute("S_USERVO", user);
 			
 			request.getRequestDispatcher("/main.jsp").forward(request, response);
 		}else {
@@ -80,6 +81,7 @@ public class LoginController extends HttpServlet {
 			request.setAttribute("userId", userId);
 			doGet(request, response);
 		}
+
 	}
 
 }
