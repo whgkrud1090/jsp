@@ -19,67 +19,41 @@
 
     <!-- Custom styles for this template -->
     <link href="<%=request.getContextPath()%>/css/signin.css" rel="stylesheet">
-    <script type="text/javascript" src="<%= request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
+    <script src="<%= request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
+    <script src="<%= request.getContextPath()%>/js/js.cookie.js"></script>
 
 <script type="text/javascript">
 
-	$(document).ready(function() {
+$(document).ready(function() {
+	
+	var userId = Cookies.get('userId');
+	if(userId != undefined)
+		$('#userId').val(userId);
+	
+	//remember me checkBox 체크
+	$('#rememberMe').prop('checked', true);
+	
+	//signinBtn의 이벤트 핸들러
+	$('#signinBtn').click(function() {
 		
-		var userId = getCookie('userId');
-		if(userId != undefined)
-			$('#userId').val(userId);
+		//remember me checkBox가 체크 되었는지 ??
+		// 체크되어있으면 
+		//userId 쿠키를 생성하고, 값은 userId input의 값을 쿠키로 설정
+		// 체크되어있지 않으면
+		//- 기존에 사용자가 아이디를 쿠키에 저장하는 기능을 사용하다가 더 이상 사용하지 않는경우
+		//- 처음부터 아이디 쿠키 저장 기능을 사용하지 않는경우
+		//	==> userId 쿠키를 삭제
 		
-		//remember me checkBox 체크
-		$('#rememberMe').prop('checked', true);
-		
-		//signinBtn의 이벤트 핸들러
-		$('#signinBtn').click(function() {
-			
-			//remember me checkBox가 체크 되었는지 ??
-			// 체크되어있으면 
-			//userId 쿠키를 생성하고, 값은 userId input의 값을 쿠키로 설정
-			// 체크되어있지 않으면
-			//- 기존에 사용자가 아이디를 쿠키에 저장하는 기능을 사용하다가 더 이상 사용하지 않는경우
-			//- 처음부터 아이디 쿠키 저장 기능을 사용하지 않는경우
-			//	==> userId 쿠키를 삭제
-			
-			if($('#rememberMe').prop('checked')){
-				setCookie('userId', $('#userId').val(), 30);
-			}else{
-				deleteCookie('userId');
-			}
-			
-			//로그인 요청 처리
-			$('#frm').submit();
-			
-		})
-	})
-		
-
-	function getCookie(cookieId) {
-		
-		var cookies = document.cookie.split("; ");
-		
-		for(var i = 0; i < cookies.length; i++){
-			var cookie = cookies[i];
-			var cookieNmValue = cookie.split('=');
-			
-			if(cookieId == cookieNmValue[0])
-				return cookieNmValue[1];
+		if($('#rememberMe').prop('checked')){
+			Cookies.set('userId', $('#userId').val(), {expires: 30});
+		}else{
+			Cookies.remove('userId');
 		}
-	}
-	
-	function setCookie(cookieNm, cookieValue, expires){
-		var dt = new Date();
-		dt.setDate(dt.getDate() + Number(expires));
-		document.cookie = cookieNm + "=" + cookieValue + "; path=/; expires=" + dt.toGMTString();
-	}
-	
-	function deleteCookie(cookieNm) {
-		//과거의 날짜로 설정해 삭제
-		setCookie(cookieNm, "", -1);
-	}
-	
+		
+		//로그인 요청 처리
+		$('#frm').submit();
+	})
+})
 </script>
   </head>
   <body>
