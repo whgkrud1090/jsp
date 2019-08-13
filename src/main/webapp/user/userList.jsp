@@ -1,13 +1,8 @@
 <%@page import="kr.or.ddit.user.model.User"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" errorPage=""%>
-  
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%> 이거 바로 밑에다가
-
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,23 +16,19 @@
 <link rel="icon" href="../../favicon.ico">
 
 <title>Jsp-basicLib</title>
-
-<!-- 지시자 -->
-<%@include file = "/commonjsp/basicLib.jsp" %>
+<%@include file="/commonjsp/basicLib.jsp" %>
 </head>
+
 <body>
 
-	    <nav class="navbar navbar-inverse navbar-fixed-top">
-<%@include file = "/commonjsp/header.jsp" %>
-</nav>
-
+<!-- header -->
+<%@include file="/commonjsp/header.jsp" %>
 <div class="container-fluid">
 		<div class="row">
 			
 <div class="col-sm-3 col-md-2 sidebar">
-<%@ include file = "/commonjsp/left.jsp" %>
-</div>
-<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+	<%@include file="/commonjsp/left.jsp" %>
+</div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
 
 <div class="row">
@@ -51,30 +42,31 @@
 					<th>사용자 별명</th>
 					<th>등록일시</th>
 				</tr>
-<%-- 				<% --%>
-<!--  					//List<User> userList = (List<User>)request.getAttribute("userList"); -->
-										
-<!--  					//for(User uservo : userList){ -->
-<%-- 				%> --%>
-<!-- 				<tr> -->
-<%-- 					<td><%= //uservo.getUserId() %></td> --%>
-<%-- 					<td><%= //uservo.getUserNm() %></td> --%>
-<!-- 					<td></td> -->
-<!-- 					<td></td> -->
-<!-- 				</tr> -->
-<%-- 				<%//} %> --%>
-
-<%-- for(User user : userList) --%>
-	<c:forEach items="${userList}" var="user">
-		<tr>
-			<td>${user.userId}</td>
-			<td>${user.userName}</td>
-			<td>${user.alias}</td>
-			<td>${user.reg_dt}</td>
-		</tr>
-	</c:forEach>
-
 				
+				<%-- <%
+					List<User> userList = (List<User>) request.getAttribute("userList");
+										
+					for(User user : userList){%>
+					<tr>
+						<td><%=user.getUserId() %></td>
+						<td><%=user.getUserNm() %></td>
+						<td></td>
+						<td></td>
+					</tr>
+				<%} %> --%>
+				
+				<%-- for(User user : userList --%>
+				
+				
+				<c:forEach items="${userList}" var="user">
+					<tr>
+						<td>${user.userId}</td>
+						<td>${user.userName}</td>
+						<td>${user.alias}</td>
+						<td>${user.reg_dt}</td>
+					</tr>
+				</c:forEach>
+						
 			</table>
 		</div>
 
