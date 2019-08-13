@@ -30,11 +30,14 @@
 <%@ include file = "/commonjsp/left.jsp" %>
 </div><div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 				
-
 <div class="blog-header">
-	<h1 class="blog-title">Main</h1>
+	<h1 class="blog-title">Main<br>
+			표현식 : <%=request.getAttribute("elTest") %> <br>
+			el : ${elTest}
+	</h1>
 	<p class="lead blog-description">Jsp / Spring.</p>
 </div>
+
 
 <div class="row">
 
