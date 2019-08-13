@@ -24,7 +24,7 @@ ResultSet rs = null;
    long start = System.currentTimeMillis();
    
    for(int i = 0; i < 20; i++){
-	   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "HDE", "java"); 
+	   conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "CHK", "java"); 
 	   String sql = "select * from lprod";
 	   stmt = conn.createStatement();
 	   rs = stmt.executeQuery(sql);

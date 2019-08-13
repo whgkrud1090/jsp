@@ -1,6 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<script src="<%=request.getContextPath()%>/js/jquery-3.4.1.min.js"></script>
+    
+    <%
+    	HttpServletRequest hsr = (HttpServletRequest) pageContext.getRequest();
+   		hsr.getContextPath();
+    %>
+<%-- <script src="<%=request.getContextPath()%>/js/jquery-3.4.1.min.js"></script> --%>
+
+<!-- el contextPath -->
+<script src="${pageContext.request.contextPath }/js/jquery-3.4.1.min.js"></script>
 
 <link href="<%=request.getContextPath()%>/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 

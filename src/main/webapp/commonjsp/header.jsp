@@ -15,18 +15,21 @@
 			<a class="navbar-brand" href="#">JSP/SPRING</a>
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
-			
-<ul class="nav navbar-nav navbar-right">
-				<li><a href="#">Dashboard</a></li>
-				<li><a href="#">Settings</a></li>
-				<li><a href="#">Profile</a></li>
-				<li><a href="#">Help</a></li>
-				<% User s_user = (User)session.getAttribute("S_USERVO"); %>
-				<li><a href="#">표현식 : <%=s_user.getUserNm() %></a></li>
-				<li><a href="#">el(method) : ${S_USERVO.getUserNm()}</a></li>
-				<li><a href="#">el(field) : ${S_USERVO.userNm}</a></li>
-			</ul>
-			<form class="navbar-form navbar-right">
+
+		<ul class="nav navbar-nav navbar-right">
+			<li><a href="#">Dashboard</a></li>
+			<li><a href="#">Settings</a></li>
+			<li><a href="#">Profile</a></li>
+			<li><a href="#">Help</a></li>
+			<%
+				User s_user = (User) session.getAttribute("S_USERVO");
+			%>
+			<li><a href="#">표현식 : <%=s_user.getUserName()%></a></li>
+			<li><a href="#">el(method) : ${S_USERVO.getUserNm()}</a></li>
+			<li><a href="#">el(field) : ${S_USERVO.userNm}</a></li>
+		</ul>
+
+		<form class="navbar-form navbar-right">
 				<input type="text" class="form-control" placeholder="Search...">
 			</form>
 		</div>

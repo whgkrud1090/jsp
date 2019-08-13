@@ -1,3 +1,4 @@
+
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
 <%@page import="java.sql.Statement"%>
@@ -14,10 +15,9 @@
 </head>
 <body>
 <%
-
+// 	BasicDataSource ds = (BasicDataSource)application.getAttribute("ds");
 InitialContext context = new InitialContext();
 DataSource ds = (DataSource)context.lookup("java:comp/env/jdbc/oracleDB");
-// 	BasicDataSource ds = (BasicDataSource)application.getAttribute("ds");
 	
 // start
 long start = System.currentTimeMillis();

@@ -80,18 +80,12 @@ $(document).ready(function() {
         <input type="password" id="pass" name="pass" class="form-control" placeholder="Password" required><!--value="brown1234"-->
         <div class="checkbox">
           <label>
-            <input type="checkbox" value="remember-me" id="rememberMe" name="remeberMe"> Remember me
+            <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
           </label>
         </div>
         <button id="signinBtn" class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
     </div> <!-- /container -->
-	<div class="checkbox">
-		<label> <input id="rememberMe" name="rememberMe"
-			type="checkbox" value="remember-me"> Remember me
-		</label>
-	</div>
-
 </body>
 </html>

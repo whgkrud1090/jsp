@@ -10,4 +10,6 @@ public interface IUserDao {
 
 	User getUser(String userId);
 	
+	public List<User> getUserListHalf();
+	
 }
