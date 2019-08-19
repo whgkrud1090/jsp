@@ -24,7 +24,7 @@
 			<%
 				User s_user = (User) session.getAttribute("S_USERVO");
 			%>
-			<li><a href="#">표현식 : <%=s_user.getUserName()%></a></li>
+			<li><a href="#">표현식 : <%=s_user.getUserNm()%></a></li>
 			<li><a href="#">el(method) : ${S_USERVO.getUserNm()}</a></li>
 			<li><a href="#">el(field) : ${S_USERVO.userNm}</a></li>
 		</ul>
