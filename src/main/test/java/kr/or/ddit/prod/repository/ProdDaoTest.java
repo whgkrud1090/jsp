@@ -18,6 +18,7 @@ public class ProdDaoTest {
 	*/
 	@Test
 	public void testGetProdList() {
+		
 		/***Given***/
 		IProdDao prodDao = new ProdDao();
 		String lprod_gu ="P101";
