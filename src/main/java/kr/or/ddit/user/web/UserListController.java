@@ -15,13 +15,13 @@ import kr.or.ddit.user.repository.UserDao;
 @WebServlet("/userList")
 public class UserListController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+       
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
 		/*
-		 * - doGet()
-		 * 	UserDao 사용자 리스트 조회
-		 * 	request객테에 사용자 리스트 정보 저장
-		 * 	userList.jsp를 통해서 화면응답을 생성하도록 위임
+		 * - doGet
+		. userDao 사용자 리스트 조회
+		. request 객체에 사용자 리스트 정보를 저장
+		. userList.jsp를 통해서 화면응답을 생성하도록 위임
 		 */
 		
 		UserDao userDao = new UserDao();
@@ -31,4 +31,12 @@ public class UserListController extends HttpServlet {
 		
 		request.getRequestDispatcher("/user/userList.jsp").forward(request, response);
 	}
+
 }
+
+
+
+
+
+
+

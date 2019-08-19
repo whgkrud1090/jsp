@@ -14,6 +14,14 @@
 		//yyyy-MM-dd
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	%>
-	hello.jsp : <%= sdf.format(dt) %>
+	hello.jsp : <%=sdf.format(dt)%> 
 </body>
 </html>
+
+
+
+
+
+
+
+

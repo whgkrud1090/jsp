@@ -8,17 +8,30 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-	Enumeration<String> headerNames = request.getHeaderNames();
-%>
-	<h2>request Header</h2>
+	<%
+		Enumeration<String> headerNames = request.getHeaderNames();
+	%>
+	<h2>request header</h2>
 	<ul>
 		<%while(headerNames.hasMoreElements()){
 			String headerName = headerNames.nextElement();
-			
 		%>
-		<li><%= headerName %> : <%=request.getHeader(headerName) %></li>
-		<%} %>
+			<li><%=headerName %> : <%=request.getHeader(headerName) %></li>
+		<%}%>
 	</ul>
+	
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+

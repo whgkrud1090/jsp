@@ -7,9 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Scope Result</h2>
-request : <%= request.getAttribute("reqAttr") %><br>
-session : <%= session.getAttribute("sessionAttr") %><br>
-application : <%= application.getAttribute("applicationAttr") %><br>
+<h2>scope result</h2>
+	request : <%=request.getAttribute("reqAttr") %> <br>
+	session : <%=session.getAttribute("sessionAttr") %> <br>
+	application : <%=application.getAttribute("applicationAttr") %> <br>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+

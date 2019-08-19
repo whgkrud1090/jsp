@@ -7,14 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>start ~ end의 합구하기</h2>
-	<pre>
-	단, start는 한상 end보다 작다.
-	</pre>
-	<form action="<%= request.getContextPath() %>/sumCalulation" method="post">
-	start : <input type="text" id="start" name="start"/><br>
-	end : <input type="text" id="end" name="end"/>
-	<input type="submit" value="OK"/>
-	</form>
+<form action="<%=request.getContextPath() %>/sumCalculation" method="post">
+	start : <input type="text" name="start" value="1"/><br>
+	end : <input type="text" name="end" value="10"/><br>
+	<input type="submit" value="계산하기"/>
+</form>
 </body>
 </html>

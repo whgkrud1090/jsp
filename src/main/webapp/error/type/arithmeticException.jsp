@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	X / O
+	X / 0
 </body>
 </html>

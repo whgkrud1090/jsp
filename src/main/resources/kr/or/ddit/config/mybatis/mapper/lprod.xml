@@ -3,10 +3,22 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lprod">
-  <select id="getLprodList" resultType="lprodVo">
-<!--   resultType="kr.or.ddit.user.model.UserVo" : Vo의 경로를 입력해준다. -->
-    select * 
-      from lprod
-  </select>
-  
+	<select id="getLprodList" resultType="lprod">
+		select *
+		from lprod
+	</select>
+	
+	<select id="getUser" parameterType="String" resultType="user">
+		select *
+		from users
+		where userId = #{userId}	
+	</select>
 </mapper>
+
+
+
+
+
+
+
+

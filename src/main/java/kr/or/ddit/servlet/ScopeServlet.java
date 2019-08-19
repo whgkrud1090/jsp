@@ -13,17 +13,16 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/scopeTest")
 public class ScopeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.getRequestDispatcher("/jsp/scopeTestView.jsp").forward(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String reqParam = request.getParameter("reqParam");
 		String sessionParam = request.getParameter("sessionParam");
-		String applicationAttr = request.getParameter("applicationParam");
+		String applicationParam = request.getParameter("applicationParam");
 		
-		// 각 영역에 값을 저장한다.
 		//request
 		request.setAttribute("reqAttr", reqParam + "_ATTR");
 		
@@ -31,15 +30,20 @@ public class ScopeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		session.setAttribute("sessionAttr", sessionParam + "_ATTR");
 		
-		//application(ServletContext)
-		//방법1 request.getServletContext();
-		//방법2 getServletContext();
+		//application (ServeltContext)
+		//	request.getServletContext();
+		//	getServletContext()
 
 		ServletContext application = request.getServletContext();
-		application.setAttribute("applicationAttr", applicationAttr + "_ATTR");
+		application.setAttribute("applicationAttr", applicationParam + "_ATTR");
 		
-		//출력할 수 있는 화면으로 이동
 		request.getRequestDispatcher("/jsp/scopeResult.jsp").forward(request, response);
 	}
 
 }
+
+
+
+
+
+

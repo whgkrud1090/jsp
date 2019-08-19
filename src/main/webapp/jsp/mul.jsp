@@ -1,17 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	String number = request.getParameter("number");
+	String number2 = request.getParameter("number2");
+	
+	int numberInt = Integer.parseInt(number);
+	int number2Int = Integer.parseInt(number2);
+	
+	int sumResult = numberInt * number2Int;
+%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>곱구하기</title>
+<title>Insert title here</title>
 </head>
 <body>
-	<h2>두개의 숫자 파라미터의 곱 구하는 JSP</h2>
-	<form action="<%= request.getContextPath()%>/jsp/mulResult.jsp" method="get">
-		number : <input type="text" id="number" name="number">
-		number2 : <input type="text" id="number2" name="number2">
-		<input type="submit" value="OK">
-	</form>
+	result : <%=sumResult %>
 </body>
 </html>

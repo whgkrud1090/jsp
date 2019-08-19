@@ -7,35 +7,28 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class UserListOnlyHalfController
- */
-@WebServlet("/UserListOnlyHalfController")
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import kr.or.ddit.user.repository.IUserDao;
+import kr.or.ddit.user.repository.UserDao;
+
+
+@WebServlet("/userListOnlyHalf")
 public class UserListOnlyHalfController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final Logger logger = LoggerFactory.getLogger(UserListOnlyHalfController.class);
+	private IUserDao userDao;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UserListOnlyHalfController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+   @Override
+	public void init() throws ServletException {
+		userDao = new UserDao();
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("userList",userDao.getUserListOnlyHalf());
+		
+		request.getRequestDispatcher("/user/userListOnlyHalf.jsp").forward(request, response);
 	}
 
 }

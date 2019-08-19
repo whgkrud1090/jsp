@@ -10,56 +10,64 @@ import kr.or.ddit.util.MybatisUtil;
 public class UserDao implements IUserDao{
 
 	/**
-	 * 
 	* Method : getUserList
-	* 작성자 : PC-03
+	* 작성자 : SEM-PC
 	* 변경이력 :
 	* @return
 	* Method 설명 : 사용자 전체 리스트 조회
-	 */
+	*/
 	@Override
 	public List<User> getUserList() {
-		
-		//db에서 조회가 되었다 가정하고 가짜 객체를 리턴
+		//db에서 조회가 되었다고 가정하고 가짜 객체를 리턴
 		/*List<UserVo> userList = new ArrayList<UserVo>();
 		userList.add(new UserVo("brown"));
 		userList.add(new UserVo("cony"));
 		userList.add(new UserVo("sally"));
 		userList.add(new UserVo("moon"));
-		userList.add(new UserVo("james"));
-		*/
+		userList.add(new UserVo("james"));*/
 		
-		SqlSession sqlsession = MybatisUtil.getSession();
-		List<User> userList = sqlsession.selectList("user.getUserList");
-		sqlsession.close();
-
-		return userList;		
+		SqlSession sqlSession = MybatisUtil.getSession();
+		List<User> userList = sqlSession.selectList("user.getUserList");
+		sqlSession.close();
+		
+		return userList;
 	}
 
-	/** 
+	/**
 	* Method : getUser
-	* 작성자 : PC-03
+	* 작성자 : SEM-PC
 	* 변경이력 :
 	* @param userId
 	* @return
 	* Method 설명 : userId를 갖는 사용자 정보 조회
-	 */
+	*/
 	@Override
 	public User getUser(String userId) {
-		SqlSession sqlsession = MybatisUtil.getSession();
-		User userVo = sqlsession.selectOne("user.getUser", userId);
-		sqlsession.close();
+		SqlSession sqlSession = MybatisUtil.getSession();
+		User userVo = sqlSession.selectOne("user.getUser", userId);
+		sqlSession.close();
+		
 		return userVo;
 	}
 
+	/**
+	* Method : getUserListOnlyHalf
+	* 작성자 : SEM-PC
+	* 변경이력 :
+	* @return
+	* Method 설명 : 사용자 리스트중 50명임의 조회
+	*/
 	@Override
-	public List<User> getUserListHalf() {
-		SqlSession sqlsession = MybatisUtil.getSession();
-		List<User> userList = sqlsession.selectList("user.getUserListHalf");
-		sqlsession.close();
-
-		return userList;	
+	public List<User> getUserListOnlyHalf() {
+		SqlSession sqlSession = MybatisUtil.getSession();
+		List<User> userList = sqlSession.selectList("user.getUserListOnlyHalf");
+		sqlSession.close();
+		
+		return userList;
 	}
-	
 
 }
+
+
+
+
